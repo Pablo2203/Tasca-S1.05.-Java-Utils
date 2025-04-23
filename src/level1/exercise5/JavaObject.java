@@ -1,9 +1,9 @@
-package exercise1.model;
+package level1.exercise5;
 
 import java.io.Serializable;
 
 public class JavaObject implements Serializable {
-    private static final long serialVersionUID = 1L; // Recomendado para identificar la versión de la clase
+    private static final long serialVersionUID = 1L;
 
     private String path;
     private int level;

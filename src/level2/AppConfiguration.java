@@ -1,4 +1,4 @@
-package exercise1.model.configuration;
+package level2;
 
 import java.io.FileInputStream;
 import java.io.IOException;

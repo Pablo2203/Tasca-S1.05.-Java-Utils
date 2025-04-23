@@ -1,11 +1,10 @@
-package exercise1.model;
+package level1.exercise2;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
 public class ListDirectoryAlphabetically {
-    // Implements the functionality to list a directory tree recursively
     public static void listDirectoryTree(String path) {
         File directory = new File(path);
 

@@ -1,4 +1,4 @@
-package exercise1.model;
+package level1.exercise3;
 import java.io.*;
 
 public class SaveResult {

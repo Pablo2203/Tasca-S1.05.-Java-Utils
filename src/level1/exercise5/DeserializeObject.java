@@ -1,6 +1,4 @@
-package exercise1.model.serialization;
-
-import exercise1.model.JavaObject;
+package level1.exercise5;
 
 import java.io.FileInputStream;
 import java.io.IOException;
