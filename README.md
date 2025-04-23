@@ -1,46 +1,44 @@
 # Tasca-S1.05.-Java-Utils
 
 ## 📄 Descripción - Enunciado del ejercicio
-Este proyecto permite a los usuarios gestionar y procesar directorios y archivos de manera eficiente. Ofrece funcionalidades para listar los contenidos de un directorio de manera jerárquica, guardar la estructura del directorio en un archivo, serializar y deserializar objetos, y cifrar y descifrar archivos. La aplicación demuestra operaciones robustas de manejo de archivos, gestión de configuración y persistencia de objetos.
+Este proyecto permite a los usuarios gestionar y procesar directorios y archivos de manera eficiente, implementando funcionalidades como la listar contenidos de un directorio, guardar estructuras en archivos, leer configuraciones, serializar objetos y cifrar/descifrar archivos. Abarca tres niveles de dificultad, ofreciendo diferentes funcionalidades para aprender y dominar aspectos clave del manejo de archivos, directorios, objetos y seguridad en Java.
 
-El objetivo principal del proyecto es procesar la estructura de un directorio, mostrar su contenido, guardarlo en un archivo y realizar operaciones como cifrado, descifrado y serialización.
+El objetivo principal del proyecto es procesar directorios y archivos, mostrando y almacenando estructuras, permitiendo la configuración dinámica de parámetros y demostrando el uso de AES para la seguridad de los datos.
 
 ---
 
 ## 💻 Tecnologías Utilizadas
-- **Java 17**: Lenguaje de programación principal utilizado en el proyecto.
-- **IntelliJ IDEA**: Entorno de desarrollo integrado (IDE).
-- **Java I/O**: Para la gestión de archivos y operaciones con directorios.
-- **Serialización en Java**: Para serializar y deserializar objetos de Java.
-- **API de Criptografía de Java**: Para cifrado y descifrado de archivos.
-- **Maven**: Herramienta de gestión de dependencias y construcción del proyecto.
+- **Java 17**: Lenguaje de programación utilizado.
+- **IntelliJ IDEA o Eclipse**: Entornos de desarrollo integrado (IDE).
+- **Java I/O**: Operaciones con directorios, archivos y flujos de entrada/salida.
+- **Java Serialization**: Serialización y deserialización de objetos Java.
+- **API de Criptografía de Java**: Para el cifrado/descifrado usando AES.
+- **Maven**: Herramienta de construcción del proyecto y gestión de dependencias.
 
 ---
 
 ## 📋 Requisitos
-Antes de ejecutar el proyecto, asegúrate de tener lo siguiente instalado:
-
-1. **Java Development Kit (JDK)** versión 17 o superior.
+Antes de ejecutar el proyecto, asegúrate de cumplir con los siguientes requisitos:
+1. **Instalar Java Development Kit (JDK)**, versión 17 o superior.
 2. **Maven** para gestionar las dependencias.
-3. **IntelliJ IDEA** o cualquier editor/IDE que soporte Java.
-4. Las siguientes dependencias (manejadas automáticamente por Maven):
-   - Este proyecto utiliza exclusivamente las bibliotecas principales de Java.
+3. Editor/IDE favorito (**IntelliJ IDEA** o **Eclipse**).
+4. Este proyecto utiliza las bibliotecas estándar de Java, por lo que no necesitas instalar dependencias externas.
 
 ---
 
 ## 🛠️ Instalación
-Para configurar el proyecto localmente, sigue estos pasos:
+Para instalar el proyecto localmente:
 
-1. Clona el repositorio:
+1. **Clona el repositorio**:
    ```bash
    git clone https://github.com/your-repository/gestion-de-archivos.git
    ```
-2. Navega al directorio del proyecto:
+2. **Accede al directorio**:
    ```bash
    cd gestion-de-archivos
    ```
-3. Abre el proyecto en IntelliJ IDEA o tu IDE favorito.
-4. Construye el proyecto para asegurar que todas las dependencias se hayan resuelto:
+3. **Abre el proyecto** en IntelliJ IDEA o el IDE de tu preferencia.
+4. **Construye el proyecto** con Maven para asegurarte de que todas las dependencias estén configuradas:
    ```bash
    mvn clean install
    ```
@@ -48,57 +46,145 @@ Para configurar el proyecto localmente, sigue estos pasos:
 ---
 
 ## ▶️ Ejecución
-Para ejecutar el proyecto, sigue los pasos a continuación:
+### Ejecución desde terminal:
+Todas las funcionalidades del proyecto deben ejecutarse desde la línea de comandos. Sigue los pasos:
 
-1. Proporciona el path del directorio que deseas procesar como primer argumento al ejecutar la aplicación.
-
-2. Ejecuta la clase `Main` desde tu IDE o a través de la terminal:
+1. **Compila el proyecto** para generar los archivos `.class` desde los archivos `.java`:
    ```bash
-   java -cp target/gestion-de-archivos-1.0.jar exercise1.Main <ruta-del-directorio>
+   javac -d out src/main/java/*.java
    ```
-   Reemplaza `<ruta-del-directorio>` con la ruta del directorio que deseas procesar.
 
-3. La aplicación realizará las siguientes acciones:
-   - Listará la estructura del directorio de forma jerárquica.
-   - Guardará el contenido del directorio en el archivo `Path.txt` ubicado en el directorio `src/main/resources`.
-   - Serializará el objeto `JavaObject` en el archivo `JavaObject.txt`.
-   - Cifrará el archivo `Path.txt` y luego lo descifrará.
+2. **Ejecuta el programa** desde la terminal, especificando la clase principal y los argumentos si es necesario:
+   ```bash
+   java -cp out Main <ruta-del-directorio>
+   ```
+   - Si deseas ejecutar sin argumentos, la aplicación utilizará valores predeterminados (como procesar el contenido del directorio `src/main/resources`).
+   - Estos comandos siguen buenas prácticas:
+     - Usa **rutas relativas** en lugar de absolutas.
+     - Usa `File.separator` para garantizar la portabilidad en diferentes sistemas operativos.
+
+### Funcionalidades del proyecto por niveles:
+
+---
+
+### **Nivel 1**
+
+#### - Ejercicio 1:
+Crea una clase que liste alfabéticamente el contenido de un directorio recibido por parámetro.
+
+**Ejecución**:
+```bash
+java -cp out Main <ruta-del-directorio>
+```
+Resultado: Lista todos los archivos/directorios alfabéticamente en el directorio especificado.
+
+#### - Ejercicio 2:
+Extiende la funcionalidad anterior para recorrer recursivamente los subdirectorios, listando todo su contenido en orden alfabético, incluyendo tipo ("D" para directorio, "F" para archivo) y su última fecha de modificación.
+
+**Ejecución**:
+```bash
+java -cp out Main <ruta-del-directorio>
+```
+Resultado: Muestra la estructura completa del árbol del directorio en la consola.
+
+#### - Ejercicio 3:
+Guarda la estructura del directorio (nivel 2) en un archivo `Path.txt`. Por defecto, el archivo se guardará en `src/main/resources/`.
+
+**Ejecución**:
+```bash
+java -cp out Main <ruta-del-directorio>
+```
+Resultado: La estructura jerárquica del directorio se almacena en el archivo `Path.txt`.
+
+#### - Ejercicio 4:
+Añade la funcionalidad de leer cualquier archivo .txt y mostrar su contenido por consola.
+
+**Ejecución**:
+```bash
+java -cp out Main <ruta-del-archivo-txt>
+```
+Resultado: Muestra el contenido del archivo especificado.
+
+#### - Ejercicio 5:
+Añade la capacidad de serializar un objeto Java a un archivo `.ser` y después deserializarlo.
+
+**Ejecución**:
+```bash
+java -cp out Main
+```
+El programa serializará el objeto en un archivo (`JavaObject.txt`) y lo deserializará, mostrando el contenido por consola.
+
+---
+
+### **Nivel 2**
+
+#### - Ejercicio 1:
+Extiende el ejercicio 3 (de guardar el contenido del árbol de directorios en un archivo `.txt`), configurando todo mediante un archivo de configuración. El programa debe leer:
+- Directorio a procesar.
+- Directorio y nombre del archivo de salida.
+
+Usaremos un archivo de configuración `config.properties` (por ejemplo, ubicado en `src/main/resources/config.properties`).
+
+**Ejecución**:
+```bash
+java -cp out Main
+```
+El programa leerá la configuración del archivo `config.properties` y utilizará esos parámetros para procesar el directorio y guardar el archivo.
+
+---
+
+### **Nivel 3**
+
+#### - Ejercicio 1:
+Añade una utilidad para **cifrar y descifrar** los archivos generados en los niveles anteriores, utilizando el algoritmo AES (modo ECB o CBC con PKCS5Padding).
+
+**Ejecución**:
+```bash
+java -cp out Main <path-del-archivo>
+```
+Resultado:
+- El programa cifrará `Path.txt` (o cualquier archivo generado) y lo guardará como `Path_encrypted.txt`.
+- Luego descifrará el archivo cifrado, mostrando el contenido descifrado en la consola.
 
 ---
 
 ## 🌐 Despliegue
-Este proyecto es una utilidad para usarse localmente y no requiere un despliegue específico en producción. Sin embargo, puedes empaquetarlo como un archivo JAR usando Maven y ejecutarlo en cualquier sistema con un entorno de ejecución de Java.
+Este proyecto está pensado para ejecutarse de forma local. Sin embargo, si deseas crear un archivo JAR ejecutable, sigue estos pasos:
 
-Para crear un archivo JAR:
-```bash
-mvn package
-```
-El archivo JAR será creado en el directorio `target`.
+1. Usa Maven para empaquetar el proyecto:
+   ```bash
+   mvn package
+   ```
+
+2. Esto generará un archivo JAR en el directorio `target`. Puedes ejecutar el archivo JAR con:
+   ```bash
+   java -jar target/gestion-de-archivos.jar
+   ```
 
 ---
 
 ## 🤝 Contribuciones
-¡Las contribuciones son bienvenidas! Si deseas contribuir, por favor sigue estas pautas:
-
-1. Realiza un fork del repositorio y crea tu propia rama:
+Este proyecto acepta contribuciones. Sigue los pasos:
+1. Haz un fork del repositorio.
+2. Crea una nueva rama:
    ```bash
    git checkout -b feature/nueva-funcionalidad
    ```
-2. Realiza tus cambios y haz un commit con un mensaje claro:
+3. Realiza tus cambios, haz un commit y súbelos:
    ```bash
-   git commit -m "Añadir nueva funcionalidad: descripción"
-   ```
-3. Envía tu rama a tu fork:
-   ```bash
+   git commit -m "Añadir funcionalidad X"
    git push origin feature/nueva-funcionalidad
    ```
-4. Abre un pull request y describe tus cambios en detalle.
+4. Abre un Pull Request y espera revisión.
 
 ---
 
-Si tienes preguntas o problemas, no dudes en abrir un issue en el repositorio.
+## 💡 Mejores Prácticas
+- Usa rutas relativas y `File.separator` en lugar de rutas absolutas para garantizar portabilidad.
+- Los ejercicios deben implementarse siguiendo el estándar de codificación del Sprint 0.
+- Programa en inglés para mantener la coherencia y profesionalidad del código.
 
 ---
 
-💡 **Autor**: Pablo Federico Gomez
-📧 Contacto: pablo.federico.gomez@gmail.com
+💡 **Autor**: Pablo Federico Gomez  
+📧 **Contacto**: pablo.federico.gomez@gmail.com  
